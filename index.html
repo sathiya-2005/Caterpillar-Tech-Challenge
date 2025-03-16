@@ -100,6 +100,9 @@
     <div class="container">
         <div class="content">
             <h2>Research Progress</h2>
+            <div class="entry" onclick="openPopup('march4')">March 4 - Selection Confirmation</div>
+            <div class="entry" onclick="openPopup('march6')">March 6 - Problem Statement Briefing</div>
+            <div class="entry" onclick="openPopup('march8')">March 8 - Initial Research</div>
 
             <div class="entry" onclick="openPopup('march8')">March 8 - Competition Announcement & Research Start</div>
             <div class="entry" onclick="openPopup('march9')">March 9 - Understanding DEF Tanks</div>
@@ -118,6 +121,21 @@
 
     <script>
         const popupData = {
+            'march4': `
+                <h2>March 4 - Selection Confirmation</h2>
+                <p>We received an email confirming our selection for the next round.</p>
+            `,
+            'march6': `
+                <h2>March 6 - Problem Statement Briefing</h2>
+                <p>Had a call with Caterpillar regarding the DEF quality detection mechanism.</p>
+            `,
+            'march8': `
+                <h2>March 8 - Initial Research</h2>
+                <p>Started researching DEF quality detection techniques and existing challenges.</p>
+                <p><strong>Drive Link:</strong></p>
+                <a href="https://drive.google.com/drive/folders/1ELIoA3idkxtMkBV0AWuv4y1ZKfcmAsVX?usp=drive_link">March 8 Research Files</a>
+            `,
+
             'march8': `
                 <h2>March 8 - Competition Announcement & Research Start</h2>
                 <p>We received the competition details and started researching DEF quality monitoring systems.</p>
@@ -141,11 +159,13 @@
             'march11': `
                 <h2>March 11 - Problems with Current DEF Systems</h2>
                 <p>Identified issues like contamination, sensor failures, and improper dosing.</p>
+                <a href="https://drive.google.com/drive/folders/1FDqZp2XHD2syU7fpy928MNezqYEK1V3j?usp=drive_link">Drive Link</a>
                 <a href="https://datoms.io/blogs/asset-monitoring/diesel-exhaust-fluid-integration-monitoring-genset-performance-emission-compliance/">DEF Issues</a>
             `,
             'march12': `
                 <h2>March 12 - Designing a Better DEF System</h2>
                 <p>Developed a detachable DEF filler concept with integrated real-time quality sensors and automated valves.</p>
+                <a href="https://drive.google.com/drive/folders/1ELIoA3idkxtMkBV0AWuv4y1ZKfcmAsVX?usp=drive_link">Drive Link</a>
                 <a href="https://xemodex.com/blog/how-a-diesel-exhaust-fluid-def-tank-works/">DEF Tank Guide</a>
                 <a href="https://youtu.be/Wl6BPts13iI">Fluid Flow Analysis</a>
             `,
