@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEF Quality Detection - Research Journey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #0066ff, #00ccff);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .content {
+            background: #1e1e1e;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+        }
+        h1, h2 {
+            color: #00ccff;
+        }
+        .entry {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(0, 204, 255, 0.1);
+            border-left: 5px solid #00ccff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        .entry:hover {
+            background: rgba(0, 204, 255, 0.3);
+            transform: scale(1.02);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            background: #222;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.3);
+            z-index: 10;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .popup .close {
+            display: block;
+            text-align: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: red;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+        .popup a {
+            color: #00ccff;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+        .popup a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        DEF Quality Detection - Research Journey
+    </header>
+    <div class="container">
+        <div class="content">
+            <h2>Research Progress</h2>
+
+            <div class="entry" onclick="openPopup('march8')">March 8 - Competition Announcement & Research Start</div>
+            <div class="entry" onclick="openPopup('march9')">March 9 - Understanding DEF Tanks</div>
+            <div class="entry" onclick="openPopup('march10')">March 10 - DEF Quality Measurement Techniques</div>
+            <div class="entry" onclick="openPopup('march11')">March 11 - Problems with Current DEF Systems</div>
+            <div class="entry" onclick="openPopup('march12')">March 12 - Designing a Better DEF System</div>
+            <div class="entry" onclick="openPopup('march14')">March 14 - Cost Estimation and Feasibility</div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div id="popup-content"></div>
+    </div>
+
+    <script>
+        const popupData = {
+            'march8': `
+                <h2>March 8 - Competition Announcement & Research Start</h2>
+                <p>We received the competition details and started researching DEF quality monitoring systems.</p>
+                <a href="https://drive.google.com/drive/folders/1FDqZp2XHD2syU7fpy928MNezqYEK1V3j?usp=sharing">Drive Link</a>
+            `,
+            'march9': `
+                <h2>March 9 - Understanding DEF Tanks</h2>
+                <p>Explored the fundamentals of DEF tanks, their role in emission control, and limitations in current detection methods.</p>
+                <a href="https://drive.google.com/drive/folders/1ELIoA3idkxtMkBV0AWuv4y1ZKfcmAsVX?usp=sharing">Drive Link</a>
+                <a href="https://kus-usa.com/resources/def-tanks-def-sensors-need-to-know/">DEF Tank Basics</a>
+                <a href="https://www.linkedin.com/posts/rajat-walia_mechanical-mechanicalengineering-aerospace-ugcPost-7298701004852629505-O1Ah">Industry Insights</a>
+            `,
+            'march10': `
+                <h2>March 10 - DEF Quality Measurement Techniques</h2>
+                <p>Researched various DEF quality assessment methods, including NIR spectroscopy and refractive index measurement.</p>
+                <a href="https://drive.google.com/drive/folders/1OOUCnkDmBFpaUgLkJ1ZyIu9RY2MwfWTg?usp=sharing">Drive Link</a>
+                <a href="https://youtu.be/z-1JkHeb6q8">NIR Spectroscopy</a>
+                <a href="https://youtu.be/fmhFvlJ85u4">Conductivity Testing</a>
+                <a href="https://youtu.be/uUXwRbY3y8o">Refractive Index</a>
+            `,
+            'march11': `
+                <h2>March 11 - Problems with Current DEF Systems</h2>
+                <p>Identified issues like contamination, sensor failures, and improper dosing.</p>
+                <a href="https://datoms.io/blogs/asset-monitoring/diesel-exhaust-fluid-integration-monitoring-genset-performance-emission-compliance/">DEF Issues</a>
+            `,
+            'march12': `
+                <h2>March 12 - Designing a Better DEF System</h2>
+                <p>Developed a detachable DEF filler concept with integrated real-time quality sensors and automated valves.</p>
+                <a href="https://xemodex.com/blog/how-a-diesel-exhaust-fluid-def-tank-works/">DEF Tank Guide</a>
+                <a href="https://youtu.be/Wl6BPts13iI">Fluid Flow Analysis</a>
+            `,
+            'march14': `
+                <h2>March 14 - Cost Estimation and Feasibility</h2>
+                <p>Estimated component costs and assessed implementation feasibility.</p>
+                <a href="https://drive.google.com/drive/folders/1OOUCnkDmBFpaUgLkJ1ZyIu9RY2MwfWTg?usp=drive_link">Drive Link</a>
+                <a href="https://www.tlsbv.nl/product/neospectra-micro/">NeoSpectra Sensor</a>
+                <a href="https://youtu.be/wnziB-VieJI">Camlock Coupling</a>
+                <a href="https://www.ntotank.com/blog/diesel-exhaust-fluid-101">DEF Overview</a>
+            `
+        };
+
+        function openPopup(day) {
+            document.getElementById('popup-content').innerHTML = popupData[day];
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
